@@ -2,14 +2,21 @@ import urllib.request
 import sys
 import time
 
-sleep = 5 #int(sys.argv[2])
-timespan = int(sys.argv[3])
+import urllib.request
+import sys
+import time
+
+sleep = 5 # 5 sec interval 
+timespan =3600 # one hour
 end = time.time() + timespan
-i = 0
-with open(sys.argv[1], 'w') as resfile:
+i = 0  
+
+import urllib.request, json 
+with open("busdata2.json", "w") as myfile:
+    url = urllib.request.urlopen("http://data.itsfactory.fi/journeys/api/1/vehicle-activity")
     while time.time() < end:
         i += 1
-        print >> sys.stderr, 'Iteration', str(i)
-        data = urllib.request.urlopen("http://data.itsfactory.fi/journeys/api/1/vehicle-activity")
-        print >> resfile, data.read()
+        data = json.loads(url.read().decode("utf-8"))
+        json.dump(data,myfile,indent=1)
         time.sleep(sleep)
+        print(data)   

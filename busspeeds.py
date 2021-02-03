@@ -1,9 +1,17 @@
-import json
-from sys import argv
+"""
+Created on Wed Feb  3 14:18:16 2021
+
+@author: BolarinwaAkindaini
+"""
 from math import radians, cos, sin, asin, sqrt
 import matplotlib.pyplot as plt
 from datetime import datetime
 import io
+import json
+import numpy as np
+
+
+
 
 def haversine(p1, p2):  # p1, p2 coordinate points of form [latitude, longitude]
     # convert decimal degrees to radians (also ensures values are floats) 
@@ -18,20 +26,20 @@ def haversine(p1, p2):  # p1, p2 coordinate points of form [latitude, longitude]
     r = 6371 # Radius of earth in kilometers. Use 3956 for miles
     return c * r
 
-route = argv[3]
-vehicle = argv[4] if len(argv) > 4 else None
+route = "3" #specify bus route
+vehicle = "TKL_42" # Specify bus 
 speeds = []
 locs = []
 times = []
-with open(argv[1], 'r') as infile:
-    databuf = io.StringIO.StringIO()
+with open("busdata.json", 'r') as infile:
+    databuf = io.StringIO()
     for line in infile:
         databuf.write(line)
         if line == '}\n':
             databuf.seek(0)
             data = json.load(databuf)
             databuf.close()
-            databuf = io.StringIO.StringIO()
+            databuf = io.StringIO()
             for trip in data['body']:
                 bus = trip['monitoredVehicleJourney']
                 if bus['lineRef'] == route:
@@ -54,5 +62,5 @@ for i in range(1, len(times)):
 
 plt.plot(speeds)
 plt.plot(speeds2)
-plt.savefig(argv[2])
+#plt.savefig(argv[2])
 plt.show()

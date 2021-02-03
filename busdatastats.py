@@ -11,7 +11,7 @@ with open("busdata.json", 'r') as infile:
     databuf = io.StringIO()
     for line in infile:
         databuf.write(line)
-        if line == '}\n':
+        if line == '}'or line == "}":
             databuf.seek(0)
             data = json.load(databuf)
             databuf.close()
