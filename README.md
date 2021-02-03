@@ -11,7 +11,7 @@ The program receives three parameters:
   c) The time (in seconds) how long the program should keep recording the information. E.g. if this parameter is 3600, then the program will continue to retrieve and store the data for one hour. If the time interval specified by the preceding parameter would be 5, then this would mean that the program would retrieve roughly 3600/5 = 720 pieces of data during its execution. For example th eparameters  busdata.json, 5, 3600 would keep reading bus data every 5 seconds for one hour and store all received data as such into the file busdata.json.
 Note: When you test this program, do not give a value smaller than 5 for the interval between successive data retrievals. 
 We do not wish to cause unnecessary load to the Journeys API server. Retrieving data every 5 seconds is often enough for test purposes. 
-The Journeys API is very simple to use: simply visiting the address http://data.itsfactory.fi/journeys/api/1/vehicle-activity returns information about all currently active buses within the Tampere public transportation network. The data is in JSON format. 
+The Journeys API is very simple to use: simply visiting the address http://data.itsfactory.fi/journeys/api/1/vehicle-activity returns information about all currently active buses within the Tampere city (Finland) public transportation network. The data is in JSON format. 
 
 # Part two bus busdatastats.py.
 

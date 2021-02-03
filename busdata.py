@@ -6,8 +6,8 @@ import urllib.request
 import sys
 import time
 
-sleep = 5 # 5 sec interval 
-timespan =3600 # one hour
+sleep = 5 # 5 sec interval (be careful with this, we don't want to over load the API)
+timespan =3600 # one hour(this can be edited)
 end = time.time() + timespan
 i = 0  
 
